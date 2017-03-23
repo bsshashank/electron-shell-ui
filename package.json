@@ -43,6 +43,7 @@
     "react": "^15.4.2",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
+    "reflux": "^6.4.1",
     "spectre.css": "^0.2.10"
   },
   "devDependencies": {

@@ -7,6 +7,7 @@ import Reflux from 'reflux'
 import { utils } from 'electron-shell-lib'
 
 import SideBar from '../components/SideBar'
+import { WindowStyle } from '../styles/ControlStyles'
 
 class MainLayout extends Reflux.Component {
 
@@ -19,9 +20,8 @@ class MainLayout extends Reflux.Component {
   }
 
   componentWillMount() {
-    utils.injector.addCSSFileReference('./css/font-awesome.min.css')
-    utils.injector.addCSSFileReference('./node_modules/spectre.css/dist/spectre.min.css')
-    utils.injector.addCSSFileReference('./node_modules/spectre.css/dist/spectre-exp.min.css')
+    utils.injector.addCSSFileReference('node_modules/spectre.css/dist/spectre.min.css')
+    utils.injector.addCSSFileReference('node_modules/spectre.css/dist/spectre-exp.min.css')
   }
 
   handleTogglePane (collapsed) {

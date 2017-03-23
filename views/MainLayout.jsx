@@ -6,8 +6,12 @@ import Reflux from 'reflux'
 
 import { utils } from 'electron-shell-lib'
 
+import { Route, Link } from 'react-router-dom'
+
 import SideBar from '../components/SideBar'
 import { WindowStyle } from '../styles/ControlStyles'
+
+import Home from '../views/Home'
 
 class MainLayout extends Reflux.Component {
 
@@ -70,6 +74,8 @@ class MainLayout extends Reflux.Component {
             (c) 2017
           </div>
         </div>
+
+        <Route exact path="/" component={Home}/>
       </div>
     )
   }

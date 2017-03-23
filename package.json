@@ -38,12 +38,12 @@
   },
   "dependencies": {
     "electron-shell-lib": "appelgriebsch/electron-shell-lib",
-    "fontawesome": "^4.7.2",
     "radium": "^0.18.1",
     "react": "^15.4.2",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
     "react-icons-kit": "^1.0.4",
+    "react-router-dom": "^4.0.0",
     "reflux": "^6.4.1",
     "spectre.css": "^0.2.10"
   },

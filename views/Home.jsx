@@ -3,8 +3,6 @@ import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
 
-import { Redirect } from 'react-router'
-
 import type { ISettingsManager } from 'electron-shell'
 
 class Home extends Reflux.Component {

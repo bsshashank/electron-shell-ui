@@ -12,6 +12,7 @@ import SideBar from '../components/SideBar'
 import { WindowStyle } from '../styles/ControlStyles'
 
 import Home from '../views/Home'
+import SettingsManager from '../views/SettingsManager'
 
 class MainLayout extends Reflux.Component {
 
@@ -75,7 +76,8 @@ class MainLayout extends Reflux.Component {
           </div>
         </div>
 
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Home} />
+        <Route path="/settings" component={SettingsManager} />
       </div>
     )
   }

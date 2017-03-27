@@ -6,10 +6,14 @@ import Reflux from 'reflux'
 
 import { utils } from 'electron-shell-lib'
 
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
-import SideBar from '../components/SideBar'
-import { WindowStyle } from '../styles/ControlStyles'
+import Icon from 'react-icons-kit'
+import { ic_home } from 'react-icons-kit/md/ic_home'
+import { ic_settings_applications } from 'react-icons-kit/md/ic_settings_applications'
+
+import SideBar, { Item } from '../components/SideBar'
+import { WindowStyle, ColumnLayoutStyle, SideBarStyle, MainPanelStyle } from '../styles/ControlStyles'
 
 import Home from '../views/Home'
 import SettingsManager from '../views/SettingsManager'
@@ -56,23 +60,28 @@ class MainLayout extends Reflux.Component {
     ) */
     return (
       <div className="container" style={WindowStyle}>
-        <SideBar></SideBar>
-        <div className="panel" style={WindowStyle}>
-          <div className="panel-header">
-            <div className="panel-nav">
-              <ul className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <a href="#">{this.state.activeModule}</a>
-                </li>
-              </ul>
+        <div className="column" style={ColumnLayoutStyle}>
+          <SideBar collapsed={this.state.collapsed} title="Hello World" logo="xxx">
+            <Item href="/" icon={ic_home} name="Home"/>
+            <Item href="/settings" icon={ic_settings_applications} name="Description" />
+          </SideBar>
+          <div className="panel" style={MainPanelStyle}>
+            <div className="panel-header">
+              <div className="panel-nav">
+                <ul className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="#">{this.state.activeModule}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="panel-title">{this.state.activeModule}</div>
-          <div className="panel-body">
-            {this.props.children}
-          </div>
-          <div className="panel-footer">
-            (c) 2017
+            <div className="panel-title">{this.state.activeModule}</div>
+            <div className="panel-body">
+              {this.props.children}
+            </div>
+            <div className="panel-footer">
+              (c) 2017
+            </div>
           </div>
         </div>
 

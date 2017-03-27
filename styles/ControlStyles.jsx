@@ -8,3 +8,48 @@ export const WindowStyle = {
   overflow: 'hidden',
   WebkitUserSelect: 'none'
 }
+
+export const ColumnLayoutStyle = {
+  padding: 0,
+  height: '100%',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row'
+}
+
+export const SideBarStyle = {
+  wrapper: {
+    position: 'absolute',
+    zIndex: 1000,
+    height: '100%',
+    width: '320px'
+  },
+  panel: {
+    outline: 'none',
+    flex: '0 0 auto',
+    overflow: 'hidden',
+    display: 'flex',
+    backgroundColor: '#f2f2f2',
+    flexDirection: 'column'
+  },
+  collapsed: {
+    width: '48px',
+    zIndex: 1,
+    position: 'relative'
+  },
+  item: {
+    flex: '0 0 auto',
+    display: 'flex',
+    justifyContent: 'center',
+    paddingBottom: '0.5em'
+  },
+  menu: {
+    paddingTop: '0.5em',
+    paddingBottom: '1em'
+  }
+}
+
+export const MainPanelStyle = {
+  height: '100%',
+  width: '100%'
+}

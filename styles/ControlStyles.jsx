@@ -22,7 +22,7 @@ export const SideBarStyle = {
     position: 'absolute',
     zIndex: 1000,
     height: '100%',
-    width: '320px'
+    transition: 'all 1s ease-in-out'
   },
   panel: {
     outline: 'none',
@@ -36,6 +36,9 @@ export const SideBarStyle = {
     width: '48px',
     zIndex: 1,
     position: 'relative'
+  },
+  expanded: {
+    width: '320px'
   },
   item: {
     flex: '0 0 auto',
@@ -51,5 +54,6 @@ export const SideBarStyle = {
 
 export const MainPanelStyle = {
   height: '100%',
-  width: '100%'
+  width: '100%',
+  background: '#f8f9fa'
 }

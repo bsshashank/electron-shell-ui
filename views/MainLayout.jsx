@@ -6,14 +6,15 @@ import Reflux from 'reflux'
 
 import { utils } from 'electron-shell-lib'
 
-import { Route } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 
 import Icon from 'react-icons-kit'
 import { ic_home } from 'react-icons-kit/md/ic_home'
 import { ic_settings_applications } from 'react-icons-kit/md/ic_settings_applications'
 
 import SideBar, { Item } from '../components/SideBar'
-import { WindowStyle, ColumnLayoutStyle, SideBarStyle, MainPanelStyle } from '../styles/ControlStyles'
+import { WindowStyle, ColumnLayoutStyle, SideBarStyle } from '../styles/ControlStyles'
+import ContentArea from '../components/ContentArea'
 
 import Home from '../views/Home'
 import SettingsManager from '../views/SettingsManager'
@@ -23,7 +24,6 @@ class MainLayout extends Reflux.Component {
   constructor (props, context) {
     super (props, context)
     this.state = {
-      activeModule: 'Home',
       collapsed: true
     }
   }
@@ -33,20 +33,10 @@ class MainLayout extends Reflux.Component {
     utils.injector.addCSSFileReference('node_modules/spectre.css/dist/spectre-exp.min.css')
   }
 
-  handleTogglePane (collapsed) {
+  handleTogglePane () {
     this.setState({
-      collapsed
+      collapsed: !this.state.collapsed
     })
-  }
-
-  navigateTo ({ key }) {
-    if (key === '.$1') {
-      this.setState({ activeModule: 'Home' })
-      this.props.router.push('/')
-    } else if (key === '.$2') {
-      this.setState({ activeModule: 'Settings'})
-      this.props.router.push('settings')
-    }
   }
 
   render () {
@@ -61,32 +51,17 @@ class MainLayout extends Reflux.Component {
     return (
       <div className="container" style={WindowStyle}>
         <div className="column" style={ColumnLayoutStyle}>
-          <SideBar collapsed={this.state.collapsed} title="Hello World" logo="xxx">
-            <Item href="/" icon={ic_home} name="Home"/>
-            <Item href="/settings" icon={ic_settings_applications} name="Description" />
+          <SideBar collapsed={this.state.collapsed} title="Hello World" logo="xxx" toggleSideBar={this.handleTogglePane.bind(this)}>
+            <Item href="/" icon={ic_home} name="Home" collapsed={this.state.collapsed} />
+            <Item href="/settings/Home" icon={ic_settings_applications} name="Description" collapsed={this.state.collapsed} />
           </SideBar>
-          <div className="panel" style={MainPanelStyle}>
-            <div className="panel-header">
-              <div className="panel-nav">
-                <ul className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="#">{this.state.activeModule}</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="panel-title">{this.state.activeModule}</div>
-            <div className="panel-body">
-              {this.props.children}
-            </div>
-            <div className="panel-footer">
-              (c) 2017
-            </div>
-          </div>
+          <ContentArea>
+            <Switch>
+              <Route path="/settings/:app" component={SettingsManager} />
+              <Route component={Home} />
+            </Switch>
+          </ContentArea>
         </div>
-
-        <Route exact path="/" component={Home} />
-        <Route path="/settings" component={SettingsManager} />
       </div>
     )
   }

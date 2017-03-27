@@ -14,13 +14,13 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} logo            [description]
  * @param {[type]} collapsed       [description]
  */
-const SideBar = ({ title, logo, collapsed, children }) => {
+const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
 
   if (collapsed) {
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.collapsed]}>
         <div style={[SideBarStyle.panel, SideBarStyle.collapsed]}>
-          <div style={[SideBarStyle.item, SideBarStyle.menu]}>
+          <div style={[SideBarStyle.item, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
           {children}
@@ -29,10 +29,10 @@ const SideBar = ({ title, logo, collapsed, children }) => {
     )
   } else {
     return (
-      <div style={[SideBarStyle.wrapper, SideBarStyle.panel]}>
-        <div style={[SideBarStyle.panel]}>
-          <div>
-            <span>{title}</span>
+      <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.expanded]}>
+        <div style={[SideBarStyle.panel, SideBarStyle.expanded]}>
+          <div style={[SideBarStyle.item, SideBarStyle.menu]} onClick={toggleSideBar}>
+            <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
           {children}
         </div>
@@ -44,10 +44,11 @@ const SideBar = ({ title, logo, collapsed, children }) => {
 SideBar.propTypes = {
   title: React.PropTypes.string.isRequired,
   logo: React.PropTypes.string.isRequired,
-  collapsed: React.PropTypes.bool.isRequired
+  collapsed: React.PropTypes.bool.isRequired,
+  toggleSideBar: React.PropTypes.func.isRequired
 }
 
-const SideBarItem = ({ href, icon, name }) => {
+const SideBarItem = ({ href, icon, name, collapsed }) => {
   return (
     <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.item]}>
       <Link to={href}>

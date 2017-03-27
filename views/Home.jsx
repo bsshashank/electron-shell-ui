@@ -3,6 +3,10 @@ import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
 
+import { Link } from 'react-router-dom'
+import Icon from 'react-icons-kit'
+import { cogs } from 'react-icons-kit/fa/cogs'
+
 import type { ISettingsManager } from 'electron-shell'
 
 class Home extends Reflux.Component {
@@ -17,12 +21,12 @@ class Home extends Reflux.Component {
     return (
       <div className="empty">
         <div className="empty-icon">
-          <i className="icon icon-people"></i>
+          <Icon icon={cogs} size={48}></Icon>
         </div>
         <h4 className="empty-title">No default module found</h4>
         <p className="empty-subtitle">Click the button to go to the application settings</p>
         <div className="empty-action">
-          <button className="btn btn-primary">Settings</button>
+          <Link to="/settings" className="btn btn-primary">Settings</Link>
         </div>
       </div>
     )

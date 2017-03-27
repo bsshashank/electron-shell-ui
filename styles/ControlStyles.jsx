@@ -48,7 +48,9 @@ export const SideBarStyle = {
     flex: '0 0 auto',
     display: 'flex',
     justifyContent: 'flex-start',
-    paddingBottom: '0.5em'
+    paddingBottom: '0.5em',
+    paddingLeft: '0.5em',
+    alignItems: 'center'
   },
   menu: {
     paddingTop: '0.5em',

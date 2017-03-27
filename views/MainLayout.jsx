@@ -53,10 +53,11 @@ class MainLayout extends Reflux.Component {
         <div className="column" style={ColumnLayoutStyle}>
           <SideBar collapsed={this.state.collapsed} title="Hello World" logo="xxx" toggleSideBar={this.handleTogglePane.bind(this)}>
             <Item href="/" icon={ic_home} name="Home" collapsed={this.state.collapsed} />
-            <Item href="/settings/Home" icon={ic_settings_applications} name="Description" collapsed={this.state.collapsed} />
+            <Item href="/settings/Home" icon={ic_settings_applications} name="Settings" collapsed={this.state.collapsed} />
           </SideBar>
           <ContentArea>
             <Switch>
+              <Route path="/settings" component={SettingsManager} />
               <Route path="/settings/:app" component={SettingsManager} />
               <Route component={Home} />
             </Switch>

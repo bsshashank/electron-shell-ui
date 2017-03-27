@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
  * @param {[type]} history  [description]
  */
 const NavBar = ({ match, location, history }) => {
-  let currentRoute = location.pathname.endsWith('.html') ? ['/'] : location.pathname.split('/')
+  let currentRoute = location.pathname.endsWith('.html') ? '/'.split('/') : location.pathname.split('/')
   let href=""
   let breadcrumbs = currentRoute.map((route) => {
     if (route === "")

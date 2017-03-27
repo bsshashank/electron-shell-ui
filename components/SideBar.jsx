@@ -31,7 +31,8 @@ const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.expanded]}>
         <div style={[SideBarStyle.panel, SideBarStyle.expanded]}>
           <div style={[SideBarStyle.itemLeft, SideBarStyle.menu]} onClick={toggleSideBar}>
-            <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
+            <Icon icon={ic_menu} size={32} />
+            <div style={{ paddingLeft: '0.5em', fontWeight: '600' }}>{title}</div>
           </div>
           {children}
         </div>
@@ -59,9 +60,9 @@ const SideBarItem = ({ href, icon, name, collapsed }) => {
   } else {
     return (
       <div style={[SideBarStyle.itemLeft]}>
-        <Link to={href} style={{ display: 'flex' }}>
+        <Link to={href} style={{ display: 'flex', alignItems: 'center', paddingRight: '0.5em' }}>
           <Icon icon={icon} size={32} style={{ width: '100%' }}/>
-          <div>{ name }</div>
+          <div style={{ paddingLeft: '0.5em' }}>{name}</div>
         </Link>
       </div>
     )

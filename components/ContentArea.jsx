@@ -16,7 +16,7 @@ const ContentArea = ({ children }) => {
         {children}
       </div>
       <div className="panel-footer">
-        (c) 2017
+        (c) 2017 Andreas Gerlach
       </div>
     </div>
   )

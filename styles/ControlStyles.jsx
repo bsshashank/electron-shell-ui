@@ -52,8 +52,15 @@ export const SideBarStyle = {
   }
 }
 
-export const MainPanelStyle = {
-  height: '100%',
-  width: '100%',
-  background: '#f8f9fa'
+export const PanelStyle = {
+  base: {
+    height: '100%',
+    width: '100%',
+    background: '#f8f9fa'
+  },
+  body: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex'
+  }
 }

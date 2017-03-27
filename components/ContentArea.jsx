@@ -4,15 +4,15 @@ import React from 'react'
 import Radium from 'radium'
 
 import NavBar from '../components/NavBar'
-import { MainPanelStyle } from '../styles/ControlStyles'
+import { PanelStyle } from '../styles/ControlStyles'
 
 const ContentArea = ({ children }) => {
   return (
-    <div className="panel" style={MainPanelStyle}>
+    <div className="panel" style={[PanelStyle.base]}>
       <div className="panel-header">
         <NavBar />
       </div>
-      <div className="panel-body" style={MainPanelStyle}>
+      <div className="panel-body" style={[PanelStyle.base, PanelStyle.body]}>
         {children}
       </div>
       <div className="panel-footer">

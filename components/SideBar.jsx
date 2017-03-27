@@ -14,7 +14,7 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} logo            [description]
  * @param {[type]} collapsed       [description]
  */
-const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
+const SideBar = ({ title, collapsed, toggleSideBar, children }) => {
   if (collapsed) {
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.collapsed]}>
@@ -43,7 +43,6 @@ const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
 
 SideBar.propTypes = {
   title: React.PropTypes.string.isRequired,
-  logo: React.PropTypes.string.isRequired,
   collapsed: React.PropTypes.bool.isRequired,
   toggleSideBar: React.PropTypes.func.isRequired
 }

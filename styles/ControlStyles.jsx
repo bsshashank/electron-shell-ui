@@ -22,7 +22,7 @@ export const SideBarStyle = {
     position: 'absolute',
     zIndex: 1000,
     height: '100%',
-    transition: 'all 1s ease-in-out'
+    transition: 'width 0.5s ease-in-out'
   },
   panel: {
     outline: 'none',
@@ -33,17 +33,21 @@ export const SideBarStyle = {
     flexDirection: 'column'
   },
   collapsed: {
-    width: '48px',
-    zIndex: 1,
-    position: 'relative'
+    width: '48px'
   },
   expanded: {
-    width: '320px'
+    width: '200px'
   },
-  item: {
+  itemCentered: {
     flex: '0 0 auto',
     display: 'flex',
     justifyContent: 'center',
+    paddingBottom: '0.5em'
+  },
+  itemLeft: {
+    flex: '0 0 auto',
+    display: 'flex',
+    justifyContent: 'flex-start',
     paddingBottom: '0.5em'
   },
   menu: {
@@ -54,6 +58,7 @@ export const SideBarStyle = {
 
 export const PanelStyle = {
   base: {
+    paddingLeft: '48px',
     height: '100%',
     width: '100%',
     background: '#f8f9fa'

@@ -15,12 +15,11 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} collapsed       [description]
  */
 const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
-
   if (collapsed) {
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.collapsed]}>
         <div style={[SideBarStyle.panel, SideBarStyle.collapsed]}>
-          <div style={[SideBarStyle.item, SideBarStyle.menu]} onClick={toggleSideBar}>
+          <div style={[SideBarStyle.itemCentered, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
           {children}
@@ -31,7 +30,7 @@ const SideBar = ({ title, logo, collapsed, toggleSideBar, children }) => {
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.expanded]}>
         <div style={[SideBarStyle.panel, SideBarStyle.expanded]}>
-          <div style={[SideBarStyle.item, SideBarStyle.menu]} onClick={toggleSideBar}>
+          <div style={[SideBarStyle.itemLeft, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
           {children}
@@ -49,13 +48,31 @@ SideBar.propTypes = {
 }
 
 const SideBarItem = ({ href, icon, name, collapsed }) => {
-  return (
-    <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.item]}>
-      <Link to={href}>
-        <Icon icon={icon} size={32} style={{ width: '100%' }}/>
-      </Link>
-    </div>
-  )
+  if (collapsed) {
+    return (
+      <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.itemCentered]}>
+        <Link to={href} style={{ display: 'flex' }}>
+          <Icon icon={icon} size={32} style={{ width: '100%' }}/>
+        </Link>
+      </div>
+    )
+  } else {
+    return (
+      <div style={[SideBarStyle.itemLeft]}>
+        <Link to={href} style={{ display: 'flex' }}>
+          <Icon icon={icon} size={32} style={{ width: '100%' }}/>
+          <div>{ name }</div>
+        </Link>
+      </div>
+    )
+  }
+}
+
+SideBarItem.propTypes = {
+  href: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  collapsed: React.PropTypes.bool.isRequired,
+  icon: React.PropTypes.object.isRequired
 }
 
 export default Radium(SideBar)

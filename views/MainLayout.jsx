@@ -6,8 +6,6 @@ import Reflux from 'reflux'
 
 import { utils } from 'electron-shell-lib'
 
-import { Route, Redirect, Switch } from 'react-router-dom'
-
 import Icon from 'react-icons-kit'
 import { ic_home } from 'react-icons-kit/md/ic_home'
 import { ic_settings_applications } from 'react-icons-kit/md/ic_settings_applications'
@@ -15,9 +13,6 @@ import { ic_settings_applications } from 'react-icons-kit/md/ic_settings_applica
 import SideBar, { Item } from '../components/SideBar'
 import { WindowStyle, ColumnLayoutStyle, SideBarStyle } from '../styles/ControlStyles'
 import ContentArea from '../components/ContentArea'
-
-import Home from '../views/Home'
-import SettingsManager from '../views/SettingsManager'
 
 class MainLayout extends Reflux.Component {
 
@@ -40,14 +35,6 @@ class MainLayout extends Reflux.Component {
   }
 
   render () {
-    let routes = []
-
-    /* extensions.push(
-      <Link to={extension.path} key={extension.path}>
-        <Icon name={extension.module.config.icon} style={{ paddingRight: '10px' }} />
-        {extension.module.config.label}
-      </Link>
-    ) */
     return (
       <div className="container" style={WindowStyle}>
         <div className="column" style={ColumnLayoutStyle}>
@@ -58,11 +45,7 @@ class MainLayout extends Reflux.Component {
                    collapsed={this.state.collapsed} />
           </SideBar>
           <ContentArea>
-            <Switch>
-              <Route path="/settings" component={SettingsManager} />
-              <Route path="/settings/:app" component={SettingsManager} />
-              <Route component={Home} />
-            </Switch>
+            {this.props.children}
           </ContentArea>
         </div>
       </div>

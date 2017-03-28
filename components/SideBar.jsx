@@ -14,7 +14,12 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} logo            [description]
  * @param {[type]} collapsed       [description]
  */
-const SideBar = ({ title, collapsed, toggleSideBar, children }) => {
+const SideBar = ({ title, collapsed, toggleSideBar, children }: { title: string, collapsed: boolean, toggleSideBar: EventHandler, children: Array<{ href: string, icon: Object, name: string }>}) => {
+
+  const sideBarItems = children.map((child) => {
+    return <SideBarItem key={child.href} href={child.href} icon={child.icon} name={child.name} collapsed={collapsed} />
+  })
+
   if (collapsed) {
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.collapsed]}>
@@ -22,7 +27,7 @@ const SideBar = ({ title, collapsed, toggleSideBar, children }) => {
           <div style={[SideBarStyle.itemCentered, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
-          {children}
+          {sideBarItems}
         </div>
       </div>
     )
@@ -34,20 +39,22 @@ const SideBar = ({ title, collapsed, toggleSideBar, children }) => {
             <Icon icon={ic_menu} size={32} />
             <div style={{ paddingLeft: '0.5em', fontWeight: '600' }}>{title}</div>
           </div>
-          {children}
+          {sideBarItems}
         </div>
       </div>
     )
   }
 }
 
-SideBar.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  collapsed: React.PropTypes.bool.isRequired,
-  toggleSideBar: React.PropTypes.func.isRequired
-}
+/**
+ * [SideBarItem description]
+ * @param {[type]} href      [description]
+ * @param {[type]} icon      [description]
+ * @param {[type]} name      [description]
+ * @param {[type]} collapsed [description]
+ */
+const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, icon: Object, name: string, collapsed: boolean }) => {
 
-const SideBarItem = ({ href, icon, name, collapsed }) => {
   if (collapsed) {
     return (
       <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.itemCentered]}>
@@ -66,14 +73,6 @@ const SideBarItem = ({ href, icon, name, collapsed }) => {
       </div>
     )
   }
-}
-
-SideBarItem.propTypes = {
-  href: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  collapsed: React.PropTypes.bool.isRequired,
-  icon: React.PropTypes.object.isRequired
-}
+})
 
 export default Radium(SideBar)
-exports.Item = Radium(SideBarItem)

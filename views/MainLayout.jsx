@@ -6,15 +6,20 @@ import Reflux from 'reflux'
 
 import { utils } from 'electron-shell-lib'
 
-import Icon from 'react-icons-kit'
-import { ic_home } from 'react-icons-kit/md/ic_home'
-import { ic_settings_applications } from 'react-icons-kit/md/ic_settings_applications'
-
-import SideBar, { Item } from '../components/SideBar'
+import SideBar from '../components/SideBar'
 import { WindowStyle, ColumnLayoutStyle, SideBarStyle } from '../styles/ControlStyles'
 import ContentArea from '../components/ContentArea'
 
 class MainLayout extends Reflux.Component {
+
+  props: {
+    title: string,
+    routes: Array<{ href: string, icon: Object, name: string }>
+  }
+
+  state: {
+    collapsed: boolean
+  }
 
   constructor (props, context) {
     super (props, context)
@@ -40,9 +45,7 @@ class MainLayout extends Reflux.Component {
         <div className="column" style={ColumnLayoutStyle}>
           <SideBar collapsed={this.state.collapsed} title={this.props.title}
                    toggleSideBar={this.handleTogglePane.bind(this)}>
-            <Item href="/" icon={ic_home} name="Home" collapsed={this.state.collapsed} />
-            <Item href="/settings/Home" icon={ic_settings_applications} name="Settings"
-                   collapsed={this.state.collapsed} />
+             {this.props.routes}
           </SideBar>
           <ContentArea>
             {this.props.children}
@@ -51,10 +54,6 @@ class MainLayout extends Reflux.Component {
       </div>
     )
   }
-}
-
-MainLayout.propTypes = {
-  title: React.PropTypes.string.isRequired
 }
 
 export default Radium(MainLayout)

@@ -55,7 +55,8 @@ export const SideBarStyle = {
   },
   menu: {
     paddingTop: '0.5em',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
+    whiteSpace: 'nowrap'
   }
 }
 

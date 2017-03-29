@@ -7,15 +7,11 @@ import { Link } from 'react-router-dom'
 import Icon from 'react-icons-kit'
 import { cogs } from 'react-icons-kit/fa/cogs'
 
-import type { ISettingsManager } from 'electron-shell'
-
+/**
+ * [className description]
+ * @type {String}
+ */
 class Home extends Reflux.Component {
-
-  settingsManager: ISettingsManager
-
-  constructor(props, context) {
-    super(props, context)
-  }
 
   render () {
     return (
@@ -32,9 +28,5 @@ class Home extends Reflux.Component {
     )
   }
 }
-
-/*Home.childContextTypes = {
-  settingsManager: React.PropTypes.object.isRequired
-}*/
 
 export default Radium(Home)

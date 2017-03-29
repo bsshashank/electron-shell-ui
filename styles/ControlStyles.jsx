@@ -27,16 +27,17 @@ export const SideBarStyle = {
   panel: {
     outline: 'none',
     flex: '0 0 auto',
-    overflow: 'hidden',
     display: 'flex',
     backgroundColor: '#f2f2f2',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    transition: 'width 0.5s ease-in-out'
   },
   collapsed: {
     width: '48px'
   },
   expanded: {
-    width: '200px'
+    width: '200px',
+    overflow: 'hidden'
   },
   itemCentered: {
     flex: '0 0 auto',

@@ -24,7 +24,7 @@ const SideBar = ({ title, collapsed, toggleSideBar, children }: { title: string,
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.collapsed]}>
         <div style={[SideBarStyle.panel, SideBarStyle.collapsed]}>
-          <div style={[SideBarStyle.itemCentered, SideBarStyle.menu]} onClick={toggleSideBar}>
+          <div style={[SideBarStyle.item, SideBarStyle.itemCentered, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} style={{ width: '100%' }}/>
           </div>
           {sideBarItems}
@@ -35,7 +35,7 @@ const SideBar = ({ title, collapsed, toggleSideBar, children }: { title: string,
     return (
       <div style={[SideBarStyle.wrapper, SideBarStyle.panel, SideBarStyle.expanded]}>
         <div style={[SideBarStyle.panel, SideBarStyle.expanded]}>
-          <div style={[SideBarStyle.itemLeft, SideBarStyle.menu]} onClick={toggleSideBar}>
+          <div style={[SideBarStyle.item, SideBarStyle.itemLeft, SideBarStyle.menu]} onClick={toggleSideBar}>
             <Icon icon={ic_menu} size={32} />
             <div style={{ paddingLeft: '0.5em', fontWeight: '600' }}>{title}</div>
           </div>
@@ -57,7 +57,7 @@ const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, ico
 
   if (collapsed) {
     return (
-      <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.itemCentered]}>
+      <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.item, SideBarStyle.itemCentered]}>
         <Link to={href} style={{ display: 'flex' }}>
           <Icon icon={icon} size={32} style={{ width: '100%' }}/>
         </Link>
@@ -65,7 +65,7 @@ const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, ico
     )
   } else {
     return (
-      <div style={[SideBarStyle.itemLeft]}>
+      <div style={[SideBarStyle.item, SideBarStyle.itemLeft]}>
         <Link to={href} style={{ display: 'flex', alignItems: 'center', paddingRight: '0.5em' }}>
           <Icon icon={icon} size={32} style={{ width: '100%' }}/>
           <div style={{ paddingLeft: '0.5em' }}>{name}</div>

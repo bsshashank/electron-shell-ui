@@ -22,6 +22,7 @@ export const SideBarStyle = {
     position: 'absolute',
     zIndex: 1000,
     height: '100%',
+    boxShadow: '0 .1rem .4rem rgba(69, 77, 93, .3)',
     transition: 'width 0.5s ease-in-out'
   },
   panel: {
@@ -39,19 +40,19 @@ export const SideBarStyle = {
     width: '200px',
     overflow: 'hidden'
   },
-  itemCentered: {
+  item: {
     flex: '0 0 auto',
     display: 'flex',
-    justifyContent: 'center',
-    paddingBottom: '0.5em'
+    alignItems: 'center',
+    paddingBottom: '0.5em',
+    transition: 'all 0.5s ease-in-out'
+  },
+  itemCentered: {
+    justifyContent: 'center'
   },
   itemLeft: {
-    flex: '0 0 auto',
-    display: 'flex',
     justifyContent: 'flex-start',
-    paddingBottom: '0.5em',
-    paddingLeft: '0.5em',
-    alignItems: 'center'
+    paddingLeft: '0.5em'
   },
   menu: {
     paddingTop: '0.5em',

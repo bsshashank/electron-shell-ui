@@ -14,7 +14,8 @@ class MainLayout extends Reflux.Component {
 
   props: {
     title: string,
-    routes: Array<{ href: string, icon: Object, name: string }>
+    routes: Array<{ href: string, icon: Object, name: string }>,
+    children: Array<Object>
   }
 
   state: {

@@ -14,7 +14,7 @@ class MainLayout extends Reflux.Component {
 
   props: {
     title: string,
-    routes: Array<{ href: string, icon: Object, name: string }>,
+    menu: Array<Object>,
     children: Array<Object>
   }
 
@@ -45,9 +45,7 @@ class MainLayout extends Reflux.Component {
       <div className='container' style={WindowStyle}>
         <div className='column' style={ColumnLayoutStyle}>
           <SideBar collapsed={this.state.collapsed} title={this.props.title}
-                   toggleSideBar={this.handleTogglePane.bind(this)}>
-             {this.props.routes}
-          </SideBar>
+                   toggleSideBar={this.handleTogglePane.bind(this)} menu={this.props.menu} />
           <ContentArea>
             {this.props.children}
           </ContentArea>

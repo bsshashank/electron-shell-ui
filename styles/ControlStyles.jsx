@@ -31,7 +31,8 @@ export const SideBarStyle = {
     display: 'flex',
     backgroundColor: '#f2f2f2',
     flexDirection: 'column',
-    transition: 'width 0.5s ease-in-out'
+    height: '100%',
+    paddingBottom: '1em'
   },
   collapsed: {
     width: '48px'

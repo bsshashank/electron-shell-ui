@@ -2,9 +2,14 @@
 
 import React from 'react'
 import Radium from 'radium'
+
 import Icon from 'react-icons-kit'
 import { Link } from 'react-router-dom'
 import { ic_menu } from 'react-icons-kit/md/ic_menu'
+
+import uuid from 'uuid'
+
+import { intlShape, injectIntl } from 'react-intl'
 
 import { SideBarStyle } from '../styles/ControlStyles'
 
@@ -14,10 +19,14 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} logo            [description]
  * @param {[type]} collapsed       [description]
  */
-const SideBar = ({ title, collapsed, toggleSideBar, children }: { title: string, collapsed: boolean, toggleSideBar: EventHandler, children: Array<{ href: string, icon: Object, name: string }>}) => {
+const SideBar = ({ intl, title, collapsed, toggleSideBar, menu }: { intl: intlShape, title: string, collapsed: boolean, toggleSideBar: EventHandler, menu: Array<Object>}) => {
 
-  const sideBarItems = children.map((child) => {
-    return <SideBarItem key={child.href} href={child.href} icon={child.icon} name={child.name} collapsed={collapsed} />
+  const { formatMessage } = intl
+  const sideBarItems = menu.map((item) => {
+    if (item.type === 'link')
+      return <SideBarItem key={item.href} href={item.href} icon={item.icon} name={formatMessage(item.name)} collapsed={collapsed} />
+    else if (item.type === 'spacer')
+      return <div key={uuid.v4()} style={{ flex: 1 }}/>
   })
 
   if (collapsed) {
@@ -75,4 +84,4 @@ const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, ico
   }
 })
 
-export default Radium(SideBar)
+export default injectIntl(Radium(SideBar))

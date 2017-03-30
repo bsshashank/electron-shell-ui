@@ -57,7 +57,7 @@ const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, ico
 
   if (collapsed) {
     return (
-      <div className="tooltip tooltip-right" data-tooltip={name} style={[SideBarStyle.item, SideBarStyle.itemCentered]}>
+      <div className='tooltip tooltip-right' data-tooltip={name} style={[SideBarStyle.item, SideBarStyle.itemCentered]}>
         <Link to={href} style={{ display: 'flex' }}>
           <Icon icon={icon} size={32} style={{ width: '100%' }}/>
         </Link>

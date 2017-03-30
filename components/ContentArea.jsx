@@ -8,14 +8,14 @@ import { PanelStyle } from '../styles/ControlStyles'
 
 const ContentArea = ({ children }) => {
   return (
-    <div className="panel" style={[PanelStyle.base]}>
-      <div className="panel-header">
+    <div className='panel' style={[PanelStyle.base]}>
+      <div className='panel-header'>
         <NavBar />
       </div>
-      <div className="panel-body" style={[PanelStyle.base, PanelStyle.body]}>
+      <div className='panel-body' style={[PanelStyle.base, PanelStyle.body]}>
         {children}
       </div>
-      <div className="panel-footer">
+      <div className='panel-footer'>
         (c) 2017 Andreas Gerlach
       </div>
     </div>

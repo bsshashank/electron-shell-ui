@@ -17,10 +17,10 @@ const NavBar = ({ match, location, history }) => {
     if (route === "")
       return
     href = `${href}/${route}`
-    return (<li key={route} className="breadcrumb-item"><Link to={href}>{route}</Link></li>)
+    return (<li key={route} className='breadcrumb-item'><Link to={href}>{route}</Link></li>)
   })
   return (
-    <ul className="breadcrumb">
+    <ul className='breadcrumb'>
       {breadcrumbs}
     </ul>
   )

@@ -42,8 +42,8 @@ class MainLayout extends Reflux.Component {
 
   render () {
     return (
-      <div className="container" style={WindowStyle}>
-        <div className="column" style={ColumnLayoutStyle}>
+      <div className='container' style={WindowStyle}>
+        <div className='column' style={ColumnLayoutStyle}>
           <SideBar collapsed={this.state.collapsed} title={this.props.title}
                    toggleSideBar={this.handleTogglePane.bind(this)}>
              {this.props.routes}

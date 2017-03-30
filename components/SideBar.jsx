@@ -9,8 +9,6 @@ import { ic_menu } from 'react-icons-kit/md/ic_menu'
 
 import uuid from 'uuid'
 
-import { intlShape, injectIntl } from 'react-intl'
-
 import { SideBarStyle } from '../styles/ControlStyles'
 
 /**
@@ -19,12 +17,11 @@ import { SideBarStyle } from '../styles/ControlStyles'
  * @param {[type]} logo            [description]
  * @param {[type]} collapsed       [description]
  */
-const SideBar = ({ intl, title, collapsed, toggleSideBar, menu }: { intl: intlShape, title: string, collapsed: boolean, toggleSideBar: EventHandler, menu: Array<Object>}) => {
+const SideBar = ({ title, collapsed, toggleSideBar, menu }: { title: string, collapsed: boolean, toggleSideBar: EventHandler, menu: Array<Object>}) => {
 
-  const { formatMessage } = intl
   const sideBarItems = menu.map((item) => {
     if (item.type === 'link')
-      return <SideBarItem key={item.href} href={item.href} icon={item.icon} name={formatMessage(item.name)} collapsed={collapsed} />
+      return <SideBarItem key={item.href} href={item.href} icon={item.icon} name={item.name} collapsed={collapsed} />
     else if (item.type === 'spacer')
       return <div key={uuid.v4()} style={{ flex: 1 }}/>
   })
@@ -84,4 +81,4 @@ const SideBarItem = Radium(({ href, icon, name, collapsed }: { href: string, ico
   }
 })
 
-export default injectIntl(Radium(SideBar))
+export default Radium(SideBar)

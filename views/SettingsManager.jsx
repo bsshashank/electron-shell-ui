@@ -32,7 +32,7 @@ class SettingsManager extends Reflux.Component {
               <Link to={`${baseUri}/extensions`}>
                 <FormattedMessage id='app.settings.nav.extensions'
                                   description='Navigational link to extension gallery in settings manager'
-                                  defaultMessage='Extension' />
+                                  defaultMessage='Extensions' />
               </Link>
             </li>
             <li className={ 'nav-item ' + (this.props.location.pathname === `${baseUri}/translations` ? 'active' : '') }>

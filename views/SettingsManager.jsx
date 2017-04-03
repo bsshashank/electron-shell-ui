@@ -45,10 +45,22 @@ class SettingsManager extends Reflux.Component {
                   description='Navigational link to translation manager in settings manager'
                   defaultMessage='Translations' />
               </Link>
+              <ul className='nav'>
+                { this.state.availableLocales.map(l => {
+                    return (
+                      <li key={l} className={'nav-item ' + (this.props.location.pathname === `${baseUri}/translations/${l}` ? 'active' : '')}>
+                        <Link to={`${baseUri}/translations/${l}`}>
+                          {l}
+                        </Link>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
             </li>
           </ul>
         </div>
-        <div className='column col-9' style={{ paddingLeft: '1em', paddingRight: '1em' }}>
+        <div className='column col-9' style={{ paddingLeft: '1em', paddingRight: '1em', height: '85vh' }}>
           <Switch>
             <Route path={`${baseUri}/general`} component={GeneralSettings} />
             <Route path={`${baseUri}/extensions`} component={ExtensionGallery} />

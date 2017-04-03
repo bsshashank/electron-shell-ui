@@ -8,15 +8,12 @@ import { PanelStyle } from '../styles/ControlStyles'
 
 const ContentArea = ({ children }) => {
   return (
-    <div className='panel' style={[PanelStyle.base]}>
-      <div className='panel-header'>
-        <NavBar />
-      </div>
-      <div className='panel-body' style={[PanelStyle.base, PanelStyle.body]}>
-        {children}
-      </div>
-      <div className='panel-footer'>
-        (c) 2017 Andreas Gerlach
+    <div className='container' style={[PanelStyle.base]}>
+      <div className='columns' style={{ height: '100%', width: '100%', paddingLeft: '1em', paddingRight: '1em' }}>
+        <NavBar className='column col-12' />
+        <div className='column col-12' style={[PanelStyle.base, PanelStyle.body]}>
+          {children}
+        </div>
       </div>
     </div>
   )

@@ -43,10 +43,10 @@ class MainLayout extends Reflux.Component {
   render () {
     return (
       <div className='container' style={WindowStyle}>
-        <div className='column' style={ColumnLayoutStyle}>
-          <SideBar collapsed={this.state.collapsed} title={this.props.title}
+        <div className='columns col-gapless' style={ColumnLayoutStyle}>
+          <SideBar className='column col-2' collapsed={this.state.collapsed} title={this.props.title}
                    toggleSideBar={this.handleTogglePane.bind(this)} menu={this.props.menu} />
-          <ContentArea>
+          <ContentArea className='column col-10'>
             {this.props.children}
           </ContentArea>
         </div>

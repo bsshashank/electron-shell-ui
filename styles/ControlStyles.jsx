@@ -63,11 +63,16 @@ export const SideBarStyle = {
 }
 
 export const PanelStyle = {
-  base: {
+  container: {
     paddingLeft: '48px',
+    background: '#f8f9fa'
+  },
+  fullSize: {
     height: '100%',
     width: '100%',
-    background: '#f8f9fa'
+  },
+  columns: {
+    paddingLeft: '1em'
   },
   body: {
     justifyContent: 'center',

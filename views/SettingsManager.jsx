@@ -60,7 +60,7 @@ class SettingsManager extends Reflux.Component {
             </li>
           </ul>
         </div>
-        <div className='column col-9' style={{ paddingLeft: '1em', paddingRight: '1em', height: '85vh' }}>
+        <div className='column col-9' style={{ paddingLeft: '1em', paddingRight: '1em', height: '80vh' }}>
           <Switch>
             <Route path={`${baseUri}/general`} component={GeneralSettings} />
             <Route path={`${baseUri}/extensions`} component={ExtensionGallery} />

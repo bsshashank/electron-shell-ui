@@ -19,7 +19,7 @@ const TranslationManager = (props, context) => {
           defaultMessage='Translation Manager' />
       </h4>
       <div className='divider' />
-      <div style={{ height: '75vh', overflowY: 'auto' }}>
+      <div style={{ height: '70vh', overflowY: 'auto' }}>
         <div className='column col-12' style={{ overflowY: 'auto' }}>
           <div>
             {translationStore.state.localeData.data.map(d => {

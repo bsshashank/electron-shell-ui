@@ -15,7 +15,9 @@ const ContentArea = ({ children }) => {
           <NavBar />
         </div>
         <div className='column col-12' style={[PanelStyle.body]}>
-          {children}
+          <div className='container'>
+            {children}
+          </div>
         </div>
         <div className='column col-12'>
           <ActionBar />

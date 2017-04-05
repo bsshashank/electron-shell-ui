@@ -1,6 +1,8 @@
 // @flow
 
 import React from 'react'
+import Radium from 'radium'
+
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
@@ -26,4 +28,4 @@ const NavBar = ({ match, location, history }) => {
   )
 }
 
-export default withRouter(NavBar)
+export default withRouter(Radium(NavBar))

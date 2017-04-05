@@ -51,14 +51,14 @@
   },
   "dependencies": {
     "electron-shell-lib": "appelgriebsch/electron-shell-lib",
-    "radium": "^0.18.1",
+    "radium": "^0.18.2",
     "react": "^15.4.2",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
-    "react-icons-kit": "^1.0.4",
+    "react-icons-kit": "^1.0.5",
     "react-router-dom": "^4.0.0",
     "reflux": "^6.4.1",
-    "spectre.css": "^0.2.10"
+    "spectre.css": "^0.2.12"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -71,6 +71,6 @@
     "jest-cli": "^19.0.2",
     "jsdoc": "^3.4.3",
     "jsdoc-babel": "^0.3.0",
-    "standard": "^9.0.2"
+    "standard": "^10.0.0"
   }
 }

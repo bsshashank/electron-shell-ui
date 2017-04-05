@@ -10,15 +10,22 @@ import { ic_file_upload } from 'react-icons-kit/md/ic_file_upload'
 
 import { FormattedMessage } from 'react-intl'
 
+import type { IExtensionManager } from 'electron-shell'
+
 class ExtensionGallery extends Reflux.Component {
+
+  extensionManager: IExtensionManager
 
   constructor(props, context) {
     super(props, context)
+    this.extensionManager = context.extensionManager
     this.stores = [context.extensionStore]
   }
 
-  dropExtension (filesAccepted, filesRejected) {
-    console.log(filesAccepted, filesRejected)
+  dropExtension (filesAccepted) {
+    const fileDropped = filesAccepted[0]
+    console.log('Installing extension ' + fileDropped)
+    this.extensionManager.install(fileDropped)
   }
 
   render() {

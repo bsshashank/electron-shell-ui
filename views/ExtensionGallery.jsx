@@ -10,7 +10,7 @@ import { ic_file_upload } from 'react-icons-kit/md/ic_file_upload'
 
 import { FormattedMessage } from 'react-intl'
 
-import type { IExtensionManager } from 'electron-shell'
+import type { IExtensionManager } from 'electron-shell-lib'
 
 class ExtensionGallery extends Reflux.Component {
 
@@ -22,10 +22,9 @@ class ExtensionGallery extends Reflux.Component {
     this.stores = [context.extensionStore]
   }
 
-  dropExtension (filesAccepted) {
+  dropExtension (filesAccepted:Array<File>) {
     const fileDropped = filesAccepted[0]
-    console.log('Installing extension ' + fileDropped)
-    this.extensionManager.install(fileDropped)
+    this.extensionManager.install(fileDropped.name, fileDropped)
   }
 
   render() {
@@ -41,7 +40,7 @@ class ExtensionGallery extends Reflux.Component {
           <div className='column col-12' style={{ overflowY: 'auto' }}>
             <div className='card'>
               <div className='card-body'>
-                <Dropzone key='dropHandler' onDrop={this.dropExtension} multiple={false} style={{ width: '100%' }}>
+                <Dropzone key='dropHandler' onDrop={this.dropExtension.bind(this)} multiple={false} style={{ width: '100%' }}>
                   <div className='tile tile-centered'>
                     <div className='tile-icon'>
                       <Icon icon={ic_file_upload} size={32} />

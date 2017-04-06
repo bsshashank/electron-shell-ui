@@ -6,7 +6,7 @@ import Reflux from 'reflux'
 
 import { FormattedMessage } from 'react-intl'
 
-import type { IExtensionManager, ITranslationManager } from 'electron-shell'
+import type { IExtensionManager, ITranslationManager } from 'electron-shell-lib'
 
 class GeneralSettings extends Reflux.Component {
 

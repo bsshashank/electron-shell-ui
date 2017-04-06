@@ -41,7 +41,7 @@ class ExtensionGallery extends Reflux.Component {
           <div className='column col-12' style={{ overflowY: 'auto' }}>
             <div className='card'>
               <div className='card-body'>
-                <Dropzone key='dropHandler' onDrop={this.dropExtension} multiple={false} style={{ width: '100%', textAlign: 'center' }}>
+                <Dropzone key='dropHandler' onDrop={this.dropExtension} multiple={false} style={{ width: '100%' }}>
                   <div className='tile tile-centered'>
                     <div className='tile-icon'>
                       <Icon icon={ic_file_upload} size={32} />

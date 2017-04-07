@@ -52,6 +52,21 @@ class ExtensionGallery extends Reflux.Component {
                 </Dropzone>
               </div>
             </div>
+            <div className='divider' />
+            {
+              this.state.extensions.map((ext) => {
+                return (
+                  <div className='card' key={ext._id}>
+                    <div className='card-image'>
+                      <img className='img-responsive' src={ext.bannerImage} />
+                    </div>
+                    <div className='card-header'>
+                      <div className='card-title'>{ext.name}</div>
+                    </div>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>

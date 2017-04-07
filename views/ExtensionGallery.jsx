@@ -7,6 +7,7 @@ import Reflux from 'reflux'
 import Dropzone from 'react-dropzone'
 import Icon from 'react-icons-kit'
 import { ic_file_upload } from 'react-icons-kit/md/ic_file_upload'
+import { ic_delete } from 'react-icons-kit/md/ic_delete'
 
 import { FormattedMessage } from 'react-intl'
 
@@ -55,13 +56,31 @@ class ExtensionGallery extends Reflux.Component {
             <div className='divider' />
             {
               this.state.extensions.map((ext) => {
+                ext.isActivated = (ext.status === 'active')
                 return (
                   <div className='card' key={ext._id}>
                     <div className='card-image'>
                       <img className='img-responsive' src={ext.bannerImage} />
                     </div>
                     <div className='card-header'>
+                      <div className='float-right' style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div className='form-group'>
+                          <label className='form-switch'>
+                            <input type='checkbox' value={ext.isActivated} />
+                            <i className='form-icon'></i> { ext.isActivated ? 'ACTIVE' : 'DEACTIVE' }
+                          </label>
+                        </div>
+                        <button className='btn btn-link' style={{ padding: 0 }}>
+                          <Icon icon={ic_delete} size={24} />
+                        </button>
+                      </div>
                       <div className='card-title'>{ext.name}</div>
+                    </div>
+                    <div className='card-body'>
+                      <div className='float-right'>
+                        <span>{ext.version}</span>
+                      </div>
+                      {ext.description}
                     </div>
                   </div>
                 )

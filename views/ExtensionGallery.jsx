@@ -61,7 +61,11 @@ class ExtensionGallery extends Reflux.Component {
                   <Icon icon={ic_file_upload} size={32} />
                 </div>
                 <div className='tile-content'>
-                  <div className='tile-title'>Drop your new extensions here...</div>
+                  <div className='tile-title'>
+                    <FormattedMessage id='app.settings.extgallery.dropzone'
+                                      description='Label asking for dropping new extension into this area'
+                                      defaultMessage='Drop your new extension here...' />
+                  </div>
                 </div>
               </div>
             </Dropzone>

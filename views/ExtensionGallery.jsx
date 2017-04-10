@@ -3,6 +3,7 @@
 import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
+import { object } from 'prop-types'
 
 import Dropzone from 'react-dropzone'
 import Icon from 'react-icons-kit'
@@ -121,8 +122,8 @@ class ExtensionGallery extends Reflux.Component {
 }
 
 ExtensionGallery.contextTypes = {
-  extensionManager: React.PropTypes.object.isRequired,
-  extensionStore: React.PropTypes.object.isRequired
+  extensionManager: object.isRequired,
+  extensionStore: object.isRequired
 }
 
 export default Radium(ExtensionGallery)

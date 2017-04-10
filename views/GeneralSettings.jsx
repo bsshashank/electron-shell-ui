@@ -3,6 +3,7 @@
 import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
+import { object } from 'prop-types'
 
 import { FormattedMessage } from 'react-intl'
 
@@ -58,10 +59,10 @@ class GeneralSettings extends Reflux.Component {
 }
 
 GeneralSettings.contextTypes = {
-  extensionManager: React.PropTypes.object.isRequired,
-  extensionStore: React.PropTypes.object.isRequired,
-  translationManager: React.PropTypes.object.isRequired,
-  translationStore: React.PropTypes.object.isRequired
+  extensionManager: object.isRequired,
+  extensionStore: object.isRequired,
+  translationManager: object.isRequired,
+  translationStore: object.isRequired
 }
 
 export default Radium(GeneralSettings)

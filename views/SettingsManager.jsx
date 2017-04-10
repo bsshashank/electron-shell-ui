@@ -2,6 +2,7 @@
 import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
+import { object } from 'prop-types'
 
 import { Route, Redirect, Switch, Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
@@ -69,8 +70,8 @@ class SettingsManager extends Reflux.Component {
 }
 
 SettingsManager.contextTypes = {
-  translationManager: React.PropTypes.object.isRequired,
-  translationStore: React.PropTypes.object.isRequired
+  translationManager: object.isRequired,
+  translationStore: object.isRequired
 }
 
 export default Radium(SettingsManager)

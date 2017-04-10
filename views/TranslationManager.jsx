@@ -3,6 +3,7 @@
 import React from 'react'
 import Radium from 'radium'
 import Reflux from 'reflux'
+import { object } from 'prop-types'
 
 import Icon from 'react-icons-kit'
 import { ic_translate } from 'react-icons-kit/md/ic_translate'
@@ -64,7 +65,7 @@ class TranslationManager extends Reflux.Component {
 }
 
 TranslationManager.contextTypes = {
-  translationStore: React.PropTypes.object.isRequired
+  translationStore: object.isRequired
 }
 
 export default Radium(TranslationManager)

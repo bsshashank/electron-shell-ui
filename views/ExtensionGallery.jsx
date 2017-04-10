@@ -9,6 +9,7 @@ import Dropzone from 'react-dropzone'
 import Icon from 'react-icons-kit'
 import { ic_file_upload } from 'react-icons-kit/md/ic_file_upload'
 import { ic_delete } from 'react-icons-kit/md/ic_delete'
+import { ic_settings } from 'react-icons-kit/md/ic_settings'
 
 import { FormattedMessage } from 'react-intl'
 
@@ -28,10 +29,10 @@ class ExtensionGallery extends Reflux.Component {
     console.log(extensionInfo)
     switch(extensionInfo.status) {
       case 'active':
-        this.extensionManager.deactivate(extensionInfo.id)
+        this.extensionManager.deactivate(extensionInfo._id)
         break;
       case 'deactive':
-        this.extensionManager.activate(extensionInfo.id)
+        this.extensionManager.activate(extensionInfo._id)
         break;
     }
   }
@@ -90,6 +91,9 @@ class ExtensionGallery extends Reflux.Component {
                             <i className='form-icon'></i> { ext.isActivated ? 'ACTIVE' : 'DEACTIVE' }
                           </label>
                         </div>
+                        { ext.hasSettings ? <button className='btn btn-link' style={{ padding: 0 }}>
+                          <Icon icon={ic_settings} size={24} />
+                        </button> : '' }
                         <button className='btn btn-link' style={{ padding: 0 }} onClick={this.deleteExtension.bind(this, ext)}>
                           <Icon icon={ic_delete} size={24} />
                         </button>

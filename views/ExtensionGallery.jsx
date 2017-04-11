@@ -87,7 +87,7 @@ class ExtensionGallery extends Reflux.Component {
                       <div className='float-right' style={{ display: 'flex', flexDirection: 'row' }}>
                         <div className='form-group'>
                           <label className='form-switch'>
-                            <input type='checkbox' value={ext.isActivated} onChange={this.toogleExtensionStatus.bind(this, ext)} />
+                            <input type='checkbox' checked={ext.isActivated} onChange={this.toogleExtensionStatus.bind(this, ext)} />
                             <i className='form-icon'></i> { ext.isActivated ? 'ACTIVE' : 'DEACTIVE' }
                           </label>
                         </div>

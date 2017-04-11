@@ -10,25 +10,37 @@ import { ic_translate } from 'react-icons-kit/md/ic_translate'
 import { ic_edit } from 'react-icons-kit/md/ic_edit'
 import { ic_note_add } from 'react-icons-kit/md/ic_note_add'
 
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, defineMessages, intlShape, injectIntl } from 'react-intl'
 
 class TranslationManager extends Reflux.Component {
+
+  msgs:Object
 
   constructor(props, context) {
     super(props, context)
     this.stores = [context.translationStore]
+    this.msgs = defineMessages({
+      searchPlaceholder: {
+        id: 'app.settings.transmanager.searchPlaceholder',
+        description: 'The placeholder in the empty search box',
+        defaultMessage: 'Search'
+      }
+    })
   }
 
   render() {
+    const { formatMessage } = this.context.intl
     return (
       <div>
         <div className='float-right'>
-          <button className='btn btn-link'>
-            <Icon icon={ic_edit} size={24} />
-          </button>
-          <button className='btn btn-link'>
-            <Icon icon={ic_note_add} size={24} />
-          </button>
+          <div className='input-group input-inline'>
+            <input className='form-input input-sm' placeholder={formatMessage(this.msgs.searchPlaceholder)} type='text' />
+            <button className='btn btn-primary btn-sm input-group-btn'>
+              <FormattedMessage id='app.settings.transmanager.searchAction'
+                                description='The search button in the top right corner of the setting manager'
+                                defaultMessage='Search' />
+            </button>
+          </div>
         </div>
         <h4>
           <FormattedMessage id='app.settings.transmanager.title'
@@ -41,13 +53,13 @@ class TranslationManager extends Reflux.Component {
             <div>
               {this.state.localeData.data.map(d => {
                 return (
-                  <div key={d._id} className='tile tile-centered'>
+                  <div key={d.id} className='tile tile-centered'>
                     <div className='tile-icon'>
                       <Icon icon={ic_translate} size={24} />
                     </div>
                     <div className='tile-content'>
                       <div className='tile-title'>
-                        {d._id}
+                        {d.id}
                         <div className='text-ellipsis float-right'>{d.translation}</div>
                       </div>
                       <div className='tile-subtitle'>{d.description}</div>
@@ -65,7 +77,8 @@ class TranslationManager extends Reflux.Component {
 }
 
 TranslationManager.contextTypes = {
+  intl: intlShape.isRequired,
   translationStore: object.isRequired
 }
 
-export default Radium(TranslationManager)
+export default injectIntl(Radium(TranslationManager))

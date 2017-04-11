@@ -30,8 +30,8 @@ class MainLayout extends Reflux.Component {
   }
 
   componentWillMount() {
-    utils.injector.addCSSFileReference('node_modules/spectre.css/dist/spectre.min.css')
-    utils.injector.addCSSFileReference('node_modules/spectre.css/dist/spectre-exp.min.css')
+    utils.injector.addCSSFileReference('node_modules/spectre.css/docs/dist/spectre.min.css')
+    utils.injector.addCSSFileReference('node_modules/spectre.css/docs/dist/spectre-exp.min.css')
   }
 
   handleTogglePane () {

@@ -5,7 +5,7 @@ import Radium from 'radium'
 import Reflux from 'reflux'
 import { object } from 'prop-types'
 
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
 
 import type { IExtensionManager, ISettingManager, ITranslationManager } from 'electron-shell-lib'
 
@@ -62,8 +62,8 @@ class GeneralSettings extends Reflux.Component {
             <div className='col-4'>
               <select className='form-select' ref='input-module'
                 style={{ width: '100%' }} value={this.state.settings.app.initialRoute} onChange={this.changeDefaultExtension.bind(this)}>
-                <option key='app.home' value=''>Home</option>
-                {this.state.extensions.filter(e => e.status === 'active').map(e => <option key={e.id} value={e.route}>{e.name}</option>)}
+                <option key='app.home' value=''></option>
+                {this.state.extensions.filter(e => e.status === 'active').map(e => <option key={e.id} value={e.route}>{this.props.intl.formatMessage(e.name)}</option>)}
               </select>
             </div>
           </div>
@@ -71,6 +71,10 @@ class GeneralSettings extends Reflux.Component {
       </div>
     )
   }
+}
+
+GeneralSettings.propTypes = {
+  intl: intlShape
 }
 
 GeneralSettings.contextTypes = {
@@ -82,4 +86,4 @@ GeneralSettings.contextTypes = {
   translationStore: object.isRequired
 }
 
-export default Radium(GeneralSettings)
+export default injectIntl(Radium(GeneralSettings))

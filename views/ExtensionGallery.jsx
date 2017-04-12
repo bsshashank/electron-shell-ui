@@ -11,7 +11,7 @@ import { ic_file_upload } from 'react-icons-kit/md/ic_file_upload'
 import { ic_delete } from 'react-icons-kit/md/ic_delete'
 import { ic_settings } from 'react-icons-kit/md/ic_settings'
 
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, intlShape, injectIntl  } from 'react-intl'
 
 import type { ExtensionInfoType, IExtensionManager } from 'electron-shell-lib'
 
@@ -98,7 +98,7 @@ class ExtensionGallery extends Reflux.Component {
                           <Icon icon={ic_delete} size={24} />
                         </button>
                       </div>
-                      <div className='card-title'>{ext.name}</div>
+                      <div className='card-title'>{this.props.intl.formatMessage(ext.name)}</div>
                       <div className='card-subtitle'>
                         <FormattedMessage id='app.settings.extgallery.author'
                                           description='Shows the information line about the author of an extension'
@@ -112,7 +112,7 @@ class ExtensionGallery extends Reflux.Component {
                       <div className='float-right'>
                         <span>{ext.version}</span>
                       </div>
-                      {ext.description}
+                      {this.props.intl.formatMessage(ext.description)}
                     </div>
                   </div>
                 )
@@ -125,9 +125,13 @@ class ExtensionGallery extends Reflux.Component {
   }
 }
 
+ExtensionGallery.propTypes = {
+  intl: intlShape
+}
+
 ExtensionGallery.contextTypes = {
   extensionManager: object.isRequired,
   extensionStore: object.isRequired
 }
 
-export default Radium(ExtensionGallery)
+export default injectIntl(Radium(ExtensionGallery))

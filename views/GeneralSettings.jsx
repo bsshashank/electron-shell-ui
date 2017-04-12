@@ -26,14 +26,12 @@ class GeneralSettings extends Reflux.Component {
 
   changeLocale() {
     const locale = this.refs['input-locale'].options[this.refs['input-locale'].selectedIndex].value
-    console.log(locale)
     this.settingManager.update('app', 'locale', locale)
   }
 
   changeDefaultExtension() {
     const extension = this.refs['input-module'].options[this.refs['input-module'].selectedIndex].value
-    console.log(extension)
-    this.settingManager.update('app', 'initialRoute', extension)
+    this.settingManager.update('app', 'defaultModule', extension)
   }
 
   render() {
@@ -61,9 +59,9 @@ class GeneralSettings extends Reflux.Component {
             <div className='col-3'><label className='form-label' htmlFor='input-module'>Default Module</label></div>
             <div className='col-4'>
               <select className='form-select' ref='input-module'
-                style={{ width: '100%' }} value={this.state.settings.app.initialRoute} onChange={this.changeDefaultExtension.bind(this)}>
+                style={{ width: '100%' }} value={this.state.settings.app.defaultModule} onChange={this.changeDefaultExtension.bind(this)}>
                 <option key='app.home' value=''></option>
-                {this.state.extensions.filter(e => e.status === 'active').map(e => <option key={e.id} value={e.route}>{this.props.intl.formatMessage(e.name)}</option>)}
+                {this.state.extensions.filter(e => e.status === 'active').map(e => <option key={e.id} value={e.id.toLowerCase()}>{this.props.intl.formatMessage(e.name)}</option>)}
               </select>
             </div>
           </div>

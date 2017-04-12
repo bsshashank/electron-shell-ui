@@ -26,7 +26,6 @@ class ExtensionGallery extends Reflux.Component {
   }
 
   toogleExtensionStatus (extensionInfo: ExtensionInfoType) {
-    console.log(extensionInfo)
     switch(extensionInfo.status) {
       case 'active':
         this.extensionManager.deactivate(extensionInfo._id)
@@ -38,7 +37,6 @@ class ExtensionGallery extends Reflux.Component {
   }
 
   deleteExtension (extensionInfo: ExtensionInfoType) {
-    console.log(extensionInfo)
   }
 
   dropExtension (filesAccepted:Array<File>) {
